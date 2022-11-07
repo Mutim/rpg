@@ -132,9 +132,9 @@ def game_screen() -> str:
 ■╠═══════════════════════════════════════════════════════════╣■
  ║   Name: {name.title(): <12}Class: {prof.title(): <12}Race: {race.title(): <12} ║    
  ║                                                           ║                           
- ║   HP: {c.fg['green']}{bars(health_current, health_max)}{c.fmt['reset']}  ║                           
- ║   MP: {c.fg['blue']}{bars(mana_current, mana_max)}{c.fmt['reset']}  ║
- ║   XP: {c.fg['yellow']}{bars(xp_current, xp_next)}{c.fmt['reset']}  ║
+ ║   HP: {c.fg('green')}{bars(health_current, health_max)}{c.fmt('reset')}  ║                           
+ ║   MP: {c.fg('blue')}{bars(mana_current, mana_max)}{c.fmt('reset')}  ║
+ ║   XP: {c.fg('yellow')}{bars(xp_current, xp_next)}{c.fmt('reset')}  ║
  ║                                                           ║
  ║   Rations: {rations:0>3}      Sanity: {sanity:0>3}      Gold: {gold:0>10}     ║
 ■╠═══════════════════════════════════════════════════════════╣■
