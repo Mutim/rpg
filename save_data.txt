@@ -1,0 +1,37 @@
+{
+    "save": 0,
+    "name": "Mutim",
+    "race": "Elf",
+    "prof": "Archer",
+    "level": 0,
+    "health": {
+        "max": 10,
+        "current": 7
+    },
+    "mana": {
+        "max": 10,
+        "current": 6
+    },
+    "experience": {
+        "current": 3,
+        "next": 10
+    },
+    "location": "town",
+    "sanity": 100,
+    "rations": 0,
+    "gold": 0,
+    "inventory": {},
+    "equipment": {
+        "head": {},
+        "body": {},
+        "hands": {},
+        "legs": {},
+        "feet": {},
+        "main_hand": {},
+        "off_hand": {},
+        "jewels": {}
+    },
+    "world_info": {
+        "event": "None"
+    }
+}
