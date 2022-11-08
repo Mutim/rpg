@@ -6,4 +6,3 @@ from .TextUtils import *
 from .Menus import *
 from .ShopUtils import *
 from .PlayerStats import *
-from .BattleField import *
