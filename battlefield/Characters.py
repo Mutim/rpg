@@ -8,7 +8,7 @@ class Player:
     def __init__(self, data: dict):
         self.data = data
 
-    def do_attack(self):
+    def do_attack(self, monster):
         pass
 
     def get_stat(self, stat):
@@ -51,3 +51,4 @@ class Monster:
 
     def do_attack(self):
         print(f'{self.data["name"]} attacked you for {self.data["damage"]}')
+

@@ -1,14 +1,27 @@
-from battlefield import Characters
-from battlefield import Monsters
-from battlefield import MonsterData
-import random
+import textwrap
 
-monsters = random.choice(list(MonsterData.data.keys()))
 
-m = Characters.Monster()
-p = Characters.Player
+def word_wrap(args):
+    n: list = textwrap.wrap(
+        args,
+        51,
+        break_long_words=True)
+    f = []
+    for chunk in n:
+        f.append(f' ║  {"".join([a for a in chunk]): <55}  ║')
+    return "\n".join([a for a in f])
 
-m.spawn()
-m.do_attack()
-print(m.drops())
 
+def event_text(message):
+    text = f"""
+■╠═══════════════════════════════════════════════════════════╣■
+ ║  {'Strange Chest of Thieves': <40}                 ║
+ ║                                                           ║
+{word_wrap(message)}
+ ║                                                           ║
+■╠═══════════════════════════════════════════════════════════╣■
+    """
+    return text
+
+
+print(event_text("This is a long message"))

@@ -3,33 +3,11 @@ import player_info
 from utils.GameStates import save_game
 from utils.TextUtils import menu_write, game_screen, cont
 from utils.Menus import Menu, MenuSelector
-from utils.ShopUtils import shop_wares, purchase
+from utils.ShopUtils import purchase, exchange
 from utils.PlayerStats import get_inventory
-from menus import main_menu
 import interests_points.Town as Town
 
 import config
-
-
-"""
-Apothecary -
-Shop owner: Grundle
-Apothecary sells:
-    Potions
-    Herbs
-    Vials of Water
-    Elixirs
-    Charcoal
-
-Apothecary Buys:
-    Herbs
-    Vials of Water
-    Elixirs
-    Charcoal
-
-
-
-"""
 
 buy_goods = {
     "Small Potion": 10,
@@ -40,7 +18,7 @@ buy_goods = {
 }
 
 sell_goods = {
-    "Herbs": 2,
+    "Herb": 2,
     "Vial of Water": 1,
     "Elixir": 5,
     "Charcoal": 2
@@ -59,19 +37,6 @@ text = f"""
 
 
 def apothecary_menu(command: Menu) -> None:
-    """Main Menu -
-    :option 1 - Buy
-        Opens the interests_points buy screen
-    :option 2 - Sell
-        Opens the interests_points sell screen
-    :option 3 - Talk
-        Opens the dialog with the shop owner
-    :option 4 - Brew Potions
-        Opens the brewing menu
-    :option 5 - Leave
-        Leaves the shop, opens the city menu
-    """
-
     match command:
         case Menu(command='1'):
             buy()
@@ -84,7 +49,7 @@ def apothecary_menu(command: Menu) -> None:
             cont()
 
         case Menu(command='4'):
-            pass
+            talk()
 
         case Menu(command='5'):
             pass
@@ -101,17 +66,17 @@ def apothecary_menu(command: Menu) -> None:
 
 def buy():
     print(game_screen())
-    menu_write(f"Buying Goods", [shop_wares(buy_goods), "[X] -  Go Back"], config.text_delay)
-    purchase(buy_goods, 'Select an item from the shelf!')
+    purchase(buy_goods, 'What new potions do I have? Check them out!')
 
 
 def sell():
     print(game_screen())
-    menu_write(f"Selling Wares", [shop_wares(sell_goods), "[X] -  Go Back"], config.text_delay)
-    ware = input()
-    if ware == '1':
-        print('Selected 1')
-        input()
+    exchange(sell_goods, "Have you got that eye of newt for me?")
+
+
+def talk():
+    talk_text = [f"How are you doing"]  # Fill this with better dialog. Like, mentioning some hint about brewing, etc
+    menu_write(f"Talk", talk_text, config.text_delay)
 
 
 def main() -> None:

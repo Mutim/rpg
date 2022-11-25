@@ -25,14 +25,12 @@ item_template = {
 }
 
 special = {
-    {
         'type': 'bow',
         'slot': 'main_hand',
         'name': 'Bow of Odysseus',
         'description': 'Powerful bow, once owned by a king!',
         'damage': 20,
         'effect': 'lightning'
-    }
 }
 
 

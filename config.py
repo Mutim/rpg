@@ -43,6 +43,7 @@ info = {
         "current": 0,
         "next": 10
     },
+    "luck": 0,
     "location": "",
     "sanity": 100,
     "rations": 0,

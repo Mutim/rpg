@@ -56,6 +56,8 @@ def main_menu(command: Menu) -> None:
             try:
                 load_game()
                 change_location(player_info.info['location'])
+            except KeyError:
+                return
             except Exception as e:
                 menu_write(title="Exception", text=traceback.format_exception(e), delay=0.01)
                 input()
@@ -81,6 +83,7 @@ def main_menu(command: Menu) -> None:
                     return
         case Menu(command='5'):
             print(f'These are the rules')
+            cont()
         case Menu(command='6'):
             print(config.line_break_fancy)
             print('\nExiting Game...\nSaving player data...')
@@ -93,8 +96,7 @@ def main_menu(command: Menu) -> None:
 def main() -> None:
 
     while True:
-        # path = os.path.join(os.path.dirname(__file__), 'save_data.txt')
-        path = 'save_data.txt'
+        path = os.path.join(os.path.dirname(__file__), 'save_data.txt')
         if os.path.exists(path):
             save_file = True
         else:

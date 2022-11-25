@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from utils.TextUtils import clear_screen, game_screen, menu_static
+from utils.TextUtils import clear_screen, game_screen, menu_static, screen_texts
 from utils.TextUtils import cont
 
 import shlex
@@ -20,6 +20,7 @@ class MenuSelector:
     def selector(text: str, shop: str, shop_menu):
         clear_screen()
         print(game_screen())
+        print(screen_texts())
         menu_static(shop, text)
         try:
             command, *arguments = shlex.split(input('\nPlease make a selection\n >> '))

@@ -52,4 +52,4 @@ class Colors:
         return f'{f}{" ".join([a for a in args])}{self.fmt("reset")}'
 
 
-print(Colors().print('Colores Successfully Loaded', f=Colors.fg("green")))
+print(Colors().print('Colors Successfully Loaded', f=Colors.fg("green")))

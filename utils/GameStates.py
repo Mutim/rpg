@@ -1,9 +1,13 @@
 import time
 import json
+import os
+from pathlib import Path
 
 import config
 import player_info
 from utils.TextUtils import cont
+
+SAVE_FILE = os.path.join(Path(os.path.dirname(__file__)).parents[0], 'menus', 'save_data.txt')
 
 
 def load_resources():
@@ -13,7 +17,7 @@ def load_resources():
 
 
 def save_game():
-    with open("save_data.txt", "w+") as f:
+    with open(SAVE_FILE, "w+") as f:
         j = json.dumps(player_info.info, ensure_ascii=True, indent=4)
         f.write(str(j))
 
@@ -25,7 +29,7 @@ def delete_game():
 
 def load_game():
     try:
-        with open('save_data.txt', 'r') as f:
+        with open(SAVE_FILE, 'r') as f:
             data = f.read()
             fi = json.loads(data)
             player_info.info.update(fi)

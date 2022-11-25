@@ -1,12 +1,13 @@
 import sys
 import subprocess
 import time
+import textwrap
 
 import config
 import player_info
-import utils.Colors
+from utils.Colors import Colors
 
-c = utils.Colors.Colors
+c = Colors
 
 
 def clear_screen():
@@ -40,9 +41,7 @@ def cont():
     clear_screen()
 
 
-# In ./menus, for each menu created, add the menu text at the beginning of the file
 def menu_static(title: str, text: str):
-    # 53 Characters
     print(f"""
 {config.line_break_bold}
 \t{title}
@@ -54,7 +53,6 @@ def menu_static(title: str, text: str):
 
 
 def menu_write(title: str, text: list, delay: float):
-    # 53 Characters
     print(f"""
 {config.line_break_bold}
 \t{title}
@@ -89,7 +87,8 @@ def runic(*args: str) -> str:
 
 
 # What gets displayed at the point of interest the character is at
-def screen_texts(location):
+def screen_texts():
+    location = player_info.info["location"]
     text = {
         '': '',  # In the event that the player data doesn't load, this prevents erroring before it's called
         'town': f"[ {config.world_name} ] - \n\n\tLooking around, there's not much going on in this town.",
@@ -139,7 +138,34 @@ def game_screen() -> str:
  ║   Rations: {rations:0>3}      Sanity: {sanity:0>3}      Gold: {gold:0>10}     ║
 ■╠═══════════════════════════════════════════════════════════╣■
 
-{screen_texts(location)}
 """
 
     return game_menu
+
+
+# Helper for event_text
+def word_wrap(args):
+    n: list = textwrap.wrap(
+        args,
+        51,
+        break_long_words=True)
+    f = []
+    for chunk in n:
+        f.append(f' ║  {"".join([a for a in chunk]): <55}  ║')
+    return "\n".join([a for a in f])
+
+
+def event_text(event):
+    name = event['name']
+    message = event['text']
+    text = f"""
+■╠═══════════════════════════════════════════════════════════╣■
+\t Random Encounter!\n
+■╠═══════════════════════════════════════════════════════════╣■
+ ║  {name: <40}                 ║
+ ║                                                           ║
+{word_wrap(message)}
+ ║                                                           ║
+■╠═══════════════════════════════════════════════════════════╣■
+    """
+    return text

@@ -16,11 +16,18 @@
         "current": 3,
         "next": 10
     },
-    "location": "town",
+    "luck": 0.1,
+    "location": "apothecary",
     "sanity": 100,
     "rations": 0,
-    "gold": 0,
-    "inventory": {},
+    "gold": 6513903,
+    "inventory": {
+        "Small Potion": 16,
+        "Beer": 61,
+        "Mouldy Bread": 23,
+        "Crackers": 30,
+        "Herb": 34
+    },
     "equipment": {
         "head": {},
         "body": {},

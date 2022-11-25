@@ -2,7 +2,7 @@ import player_info
 from utils.GameStates import save_game
 from utils.TextUtils import menu_write, game_screen, cont
 from utils.Menus import Menu, MenuSelector
-from utils.ShopUtils import purchase, shop_wares
+from utils.ShopUtils import purchase, exchange
 from utils.PlayerStats import get_inventory
 from menus import main_menu
 import interests_points.Town as Town
@@ -95,17 +95,12 @@ def guild_menu(command: Menu) -> None:
 
 def buy():
     print(game_screen())
-    menu_write(f"Buying Goods", [shop_wares(buy_goods), "[X] -  Go Back"], config.text_delay)
-    purchase(buy_goods, 'Select an item from the shelf!')
+    purchase(buy_goods, 'Anything I can sell you to help the front line?')
 
 
 def sell():
     print(game_screen())
-    menu_write(f"Selling Wares", [shop_wares(sell_goods)], config.text_delay)
-    ware = input()
-    if ware == '1':
-        print('Selected 1')
-        input()
+    exchange(sell_goods, "What have you from the front lines?")
 
 
 def main() -> None:
